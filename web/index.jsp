@@ -149,15 +149,16 @@ function animateCircle() {
     var count = 0;
     
     window.setInterval(function() {
-        
       count = (count + 1) % 200;
       var icons = line1.get('icons');
       icons[0].offset = (count / 2) + '%';
-      <%
+<%
 iter=0;
 for(ArrayList<String> Pair:Nodes)
-{iter++; %> 
-            line<%=iter%>.set('icons', icons);
+{
+ iter++; 
+%> 
+ line<%=iter%>.set('icons', icons);
      
 <%}%>
     

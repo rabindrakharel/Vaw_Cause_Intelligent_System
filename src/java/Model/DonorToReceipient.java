@@ -38,7 +38,7 @@ public class DonorToReceipient {
 "FROM cntry_dim c, receiptant_cntry_vs_yr rc\n" +
 "WHERE c.cntry_name = rc.cntry_name\n" +
 ") R\n" +
-"WHERE 1 LIMIT 1000";   
+"WHERE 1 LIMIT 100";   
      ResultSet rs=st.executeQuery(query);
     while(rs.next()){
     ArrayList<String> pair=new ArrayList<String>();
