@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Graph Data Visualization</title>
+    <link href="default.css" rel="stylesheet">
+   
+    <style>
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#map-canvas, #map_canvas {
+  height: 100%;
+}
+
+@media print {
+  html, body {
+    height: auto;
+  }
+
+  #map-canvas, #map_canvas {
+    height: 350px;
+    width : 350px;
+  }
+}
+
+#panel {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  margin-left: -180px;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+}</style>
+     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+     <script src="http://code.jquery.com/jquery.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
+        var MapZoom=6;
+        var Retardation=50;
+        var LineStrokeOpacity=3;
+        var LineColor="#FF0000";
+        var LineStokeColor="#FF0000";
+        var LineStrokeWeight=2;        
+        var CircleFillColor="#FF0000";
+        var CircleFillOpacity=0.3;
+        var CircleStrokeColor="#FF0000";
+        var CircleStrokeWeight=1;
+        var CircleStrokeOpacity=0.8;
+var line={};
+var cityCircle={};
+ 
+citymap['NodeD1'] = {
+    center: new google.maps.LatLng(56.1304,-106.347),
+    population:8000000
+};
+citymap['NodeR1'] = {
+    center: new google.maps.LatLng(33.9391,67.71),
+   population:8000000
+};
+ 
+citymap['NodeD2'] = {
+    center: new google.maps.LatLng(56.1304,-106.347),
+    population:8000000
+};
+citymap['NodeR2'] = {
+    center: new google.maps.LatLng(33.9391,67.71),
+   population:8000000
+};
+ 
+citymap['NodeD3'] = {
+    center: new google.maps.LatLng(56.1304,-106.347),
+    population:8000000
+};
+citymap['NodeR3'] = {
+    center: new google.maps.LatLng(33.9391,67.71),
+   population:8000000
+};
+
+  
+  
+function initialize() {
+  var mapOptions = {
+    center: new google.maps.LatLng(20.291, 80.027),
+    zoom: MapZoom,
+    mapTypeId: google.maps.MapTypeId.TERRAIN
+  };
+  
+  var map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
+   
+     var lineCoordinates1=[new google.maps.LatLng(56.1304,-106.347),new google.maps.LatLng(33.9391,67.71)];
+ 
+     var lineCoordinates2=[new google.maps.LatLng(56.1304,-106.347),new google.maps.LatLng(33.9391,67.71)];
+ 
+     var lineCoordinates3=[new google.maps.LatLng(56.1304,-106.347),new google.maps.LatLng(33.9391,67.71)];
+
+
+  var lineSymbol = {
+        path: google.maps.SymbolPath.FORWARD_OPEN_ARROW,
+	Scale: 1,
+	strokeColor: '#F00'
+      };
+
+   
+      line1 = new google.maps.Polyline({
+    path: lineCoordinates1,
+    icons: [{
+          icon: lineSymbol,
+          offset: '100%',
+	  scale:1
+    }],
+    map: map,
+    strokeOpacity: LineStrokeOpacity,
+    strokeWeight: LineStrokeWeight
+  });
+ 
+      line2 = new google.maps.Polyline({
+    path: lineCoordinates2,
+    icons: [{
+          icon: lineSymbol,
+          offset: '100%',
+	  scale:1
+    }],
+    map: map,
+    strokeOpacity: LineStrokeOpacity,
+    strokeWeight: LineStrokeWeight
+  });
+ 
+      line3 = new google.maps.Polyline({
+    path: lineCoordinates3,
+    icons: [{
+          icon: lineSymbol,
+          offset: '100%',
+	  scale:1
+    }],
+    map: map,
+    strokeOpacity: LineStrokeOpacity,
+    strokeWeight: LineStrokeWeight
+  });
+
+
+   
+      cityCircleD1 = new google.maps.Circle({
+        strokeColor: CircleStrokeColor,
+        strokeOpacity: CircleStrokeOpacity,
+        strokeWeight: CircleStrokeWeight,
+        fillColor: CircleFillColor ,
+        fillOpacity: CircleFillOpacity,
+        map: map,
+        center: citymap['NodeD1'].center,
+        radius: citymap['NodeD1'].population / 20
+      });
+      cityCircleS1 = new google.maps.Circle({
+        strokeColor: CircleStrokeColor,
+        strokeOpacity: CircleStrokeOpacity,
+        strokeWeight: CircleStrokeWeight,
+        fillColor: CircleFillColor ,
+        fillOpacity: CircleFillOpacity,
+        map: map,
+        center: citymap['NodeS1'].center,
+        radius: citymap['NodeS1'].population / 20
+      });
+      
+ 
+      cityCircleD2 = new google.maps.Circle({
+        strokeColor: CircleStrokeColor,
+        strokeOpacity: CircleStrokeOpacity,
+        strokeWeight: CircleStrokeWeight,
+        fillColor: CircleFillColor ,
+        fillOpacity: CircleFillOpacity,
+        map: map,
+        center: citymap['NodeD2'].center,
+        radius: citymap['NodeD2'].population / 20
+      });
+      cityCircleS2 = new google.maps.Circle({
+        strokeColor: CircleStrokeColor,
+        strokeOpacity: CircleStrokeOpacity,
+        strokeWeight: CircleStrokeWeight,
+        fillColor: CircleFillColor ,
+        fillOpacity: CircleFillOpacity,
+        map: map,
+        center: citymap['NodeS2'].center,
+        radius: citymap['NodeS2'].population / 20
+      });
+      
+ 
+      cityCircleD3 = new google.maps.Circle({
+        strokeColor: CircleStrokeColor,
+        strokeOpacity: CircleStrokeOpacity,
+        strokeWeight: CircleStrokeWeight,
+        fillColor: CircleFillColor ,
+        fillOpacity: CircleFillOpacity,
+        map: map,
+        center: citymap['NodeD3'].center,
+        radius: citymap['NodeD3'].population / 20
+      });
+      cityCircleS3 = new google.maps.Circle({
+        strokeColor: CircleStrokeColor,
+        strokeOpacity: CircleStrokeOpacity,
+        strokeWeight: CircleStrokeWeight,
+        fillColor: CircleFillColor ,
+        fillOpacity: CircleFillOpacity,
+        map: map,
+        center: citymap['NodeS3'].center,
+        radius: citymap['NodeS3'].population / 20
+      });
+      
+
+
+      
+  animateCircle();  	
+	google.maps.event.addListener(line2, 'click',function open_chart_popup() {
+        window.open('highchart.html', 'chart popup title', 'width=600px height=400px');
+    });
+
+}
+
+function open_chart_popup() {
+        window.open('highchart.html', 'chart popup title', 'width=600px height=400px');
+		}
+
+function animateCircle() {
+    var count = 0;
+    
+    window.setInterval(function() {
+        
+      count = (count + 1) % 200;
+
+      var icons = line1.get('icons');
+      icons[0].offset = (count / 2) + '%';
+      line1.set('icons', icons);
+      
+       var radius = cityCircle.get('radius');
+      radius = count*200;
+      cityCircle.set('radius', radius);
+	  
+	  var icons = line3.get('icons');
+      icons[0].offset = (count / 2) + '%';
+      line3.set('icons', icons);
+	}, Retardation);
+	
+	window.setInterval(function() {
+      count = (count + 1) % 200;
+      icons = line2.get('icons');
+      icons[0].offset = (count / 2) + '%';
+      line2.set('icons', icons);
+	}, Retardation);
+	
+  
+  
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>
+
