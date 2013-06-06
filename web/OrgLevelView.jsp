@@ -134,47 +134,48 @@ for(ArrayList<String> Pair:Nodes)
       });
       
 <%}%>
-
-      
-  animateCircle();  	
-  
-  
-   google.maps.event.addListener(cityCircle, 'click',function open_chart_popup() {
-   window.open('highchart.html?id='+cityCircle.getCenter().lat()+'b='+cityCircle.getCenter().lng(),'chart popup title', 'width=600px height=400px');   
-    });
-    
 }
 
-function animateCircle() {
-    var count = 0;
-    
-    window.setInterval(function() {
-      count = (count + 1) % 200;
-      var icons = line1.get('icons');
-      icons[0].offset = (count / 2) + '%';
-<%
-iter=0;
-for(ArrayList<String> Pair:Nodes)
-{
- iter++; 
-%> 
- line<%=iter%>.set('icons', icons);
-     
-<%}%>
-    
-      
-//       var radius = cityCircleR1.get('radius');
-//       var radius = cityCircleR1.get('radius');
-//      cityCircleR1.set('radius', 100000*count/200);
-//      cityCircleR1.set('fillOpacity',0.01*count/20*10);
-    	}, Retardation);
-
-}
 google.maps.event.addDomListener(window, 'load', initialize);
 
     </script>
   </head>
   <body>
+      <div class="formLayout">
+	<form action="DonorCountry" method="POST">
+	<fieldset class="fset">
+	<label>Donor Organisation</label><br/>
+	    <select name="region">
+            <option value="4">South Asia</option>
+            <option value="2">Africa</option>
+            <option value="1">Europe</option>
+            <option value="7">North America</option>
+            <option value="6">South America</option>
+            <option value="5">Australia</option>
+            <option value="8">Nepal</option>
+		
+        </select>
+	
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+	<form action="ReceiverCountry" method="POST">
+	<fieldset class="fset">
+	<label>Receiver Country</label><br/>
+	    <select name="region">
+            <option value="4">South Asia</option>
+            <option value="2">Africa</option>
+            <option value="1">Europe</option>
+            <option value="7">North America</option>
+            <option value="6">South America</option>
+            <option value="5">Australia</option>
+            <option value="8">Nepal</option>
+		
+        </select>
+	</div>
+            
     <div id="map-canvas"></div>
   </body>
 </html>

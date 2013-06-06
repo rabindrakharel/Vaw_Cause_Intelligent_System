@@ -1,31 +1,71 @@
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+.fset{
+border:hidden 1px #A0A0A4 ;
+background:#CCCCFF;
+}
+.formLayout
+    {
+        background-color:#D4DFFF;
+        border:inherit 1px #a1a1a1;
+        padding: 10px 10px 10px 10px;
+		width: 400px;
+		height:1000px;
+                float : Left
+    }
+    
+    .formLayout label
+    {
+        display:block;
+        width:300px;
+        color:#666600;
+        margin-bottom:5px;
+    }
+    
+     .formLayout input , .formLayout option
+    {
+        display:block;
+        width:120px;
+        color:#666600;
+        margin-bottom:5px;
+    }
+    
+ 
+    .formLayout label
+    {
+        text-align:Left;
+        padding-right:50px;
+    }
+ 
+    br
+    {
+        clear:both;
+    }
+	#button {
+	clear:both;
+	width:10px;
+        float : left;
+    margin-top: 3 px;
+    margin-left:auto;
+    margin-right:auto;
 }
 
-#map-canvas, #map_canvas {
-  height: 100%;
+#map_canvas {
+   height: 625px;
+    width: 950px;
+    azimuth:far-right;
+	align:right;
+	position : absolute;
+	top:10;
+	right:10
 }
 
-@media print {
-  html, body {
-    height: auto;
+
+  
+  #visualize{
+          border:1px;
+          background-color: #9999ff;
+          height : 100%;
+          width: 30%;
+          azimuth: right
+              
+      
   }
-
-  #map-canvas, #map_canvas {
-    height: 350px;
-    width : 350px;
-  }
-}
-
-#panel {
-  position: absolute;
-  top: 5px;
-  left: 50%;
-  margin-left: -180px;
-  z-index: 5;
-  background-color: #fff;
-  padding: 5px;
-  border: 1px solid #999;
-}

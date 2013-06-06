@@ -22,7 +22,7 @@ public class Connector {
     public Connector(){
     try{
     Class.forName("com.mysql.jdbc.Driver");
-    connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/aid_data","root","root");
+    connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/aid_data","root","");
     }
     catch(Exception ex)
     {
